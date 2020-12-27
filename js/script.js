@@ -28,3 +28,8 @@ function startQuiz() {
   
     getQuestion();
   }
+
+  function getQuestion() {
+    // get current question object from array
+    var currentQuestion = questions[currentQuestionIndex];
+  }
