@@ -11,3 +11,20 @@ var submitBtn = document.getElementById("submit");
 var startBtn = document.getElementById("start");
 var initialsEl = document.getElementById("initials");
 var feedbackEl = document.getElementById("feedback");
+
+function startQuiz() {
+    // hide start screen
+    var startScreenEl = document.getElementById("start-screen");
+    startScreenEl.setAttribute("class", "hide");
+  
+    // un-hide questions section
+    questionsEl.removeAttribute("class");
+  
+    // start timer
+    timerId = setInterval(clockTick, 1000);
+  
+    // show starting time
+    timerEl.textContent = time;
+  
+    getQuestion();
+  }
