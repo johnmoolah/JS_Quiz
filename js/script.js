@@ -73,4 +73,37 @@ function startQuiz() {
       feedbackEl.textContent = "Wrong!";
   
       feedbackEl.textContent = "Correct!";
-    }};
+    }
+  
+    // flash right/wrong feedback on page for half a second
+    feedbackEl.setAttribute("class", "feedback");
+    setTimeout(function() {
+      feedbackEl.setAttribute("class", "feedback hide");
+    }, 1000);
+  
+    // move to next question
+    currentQuestionIndex++;
+  
+    // check if we've run out of questions
+    if (currentQuestionIndex === questions.length) {
+      quizEnd();
+    } else {
+      getQuestion();
+    }
+  }
+
+  function quizEnd() {
+    // stop timer
+    clearInterval(timerId);
+  
+    // show end screen
+    var endScreenEl = document.getElementById("end-screen");
+    endScreenEl.removeAttribute("class");
+  
+    // show final score
+    var finalScoreEl = document.getElementById("final-score");
+    finalScoreEl.textContent = time;
+  
+    // hide questions section
+    questionsEl.setAttribute("class", "hide");
+  }
